@@ -1,0 +1,6 @@
+@May2026ProductsBackendApp_HostAddress = http://localhost:5150
+
+GET {{May2026ProductsBackendApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
