@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "may2026productsdemo",
+      "defaultValue": "staging",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }
