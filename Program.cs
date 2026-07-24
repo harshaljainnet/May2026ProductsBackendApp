@@ -17,12 +17,15 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowUIApp", policy =>
     {
-        policy.WithOrigins("http://localhost:5228")
+        policy.WithOrigins(
+                "http://localhost:5107",
+                "https://may2026uiapp-gghphrh3djf5cwdm.australiaeast-01.azurewebsites.net")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
-
+// Configure Azure Application Insights
+builder.Services.AddApplicationInsightsTelemetry();
 
 // Add services to the container.
 
@@ -31,11 +34,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
 builder.Configuration.AddAzureKeyVault(
         new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/"),
         new DefaultAzureCredential());
+
+
+var app = builder.Build();
+
 
 
 // Configure the HTTP request pipeline.
